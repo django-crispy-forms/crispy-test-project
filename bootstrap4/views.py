@@ -8,4 +8,4 @@ def index(request):
     from bootstrap4.forms import MessageForm
 
     # This view is missing all form handling logic for simplicity of the example
-    return render(request, 'index.html', {'form': MessageForm()})
+    return render(request, 'bootstrap4/index.html', {'form': MessageForm()})
