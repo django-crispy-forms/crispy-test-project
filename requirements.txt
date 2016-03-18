@@ -1,6 +1,6 @@
 coverage==3.7.1
 Django==1.8.5
-git+https://github.com/maraujop/django-crispy-forms.git@dev#egg=django_crispy_forms-dev
+django-crispy-forms # Use pip install -e ../django-crispy-forms for local dev
 pkginfo==1.2.1
 py==1.4.30
 pytest==2.8.1
