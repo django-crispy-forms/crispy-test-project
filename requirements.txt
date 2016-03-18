@@ -1,6 +1,7 @@
 coverage==3.7.1
 Django==1.8.5
 django-crispy-forms # Use pip install -e ../django-crispy-forms for local dev
+gunicorn
 pkginfo==1.2.1
 py==1.4.30
 pytest==2.8.1
