@@ -1,7 +1,6 @@
--f /Users/william/src/pip/wheels
 coverage==3.7.1
 Django==1.8.5
--e git+git@github.com:maraujop/django-crispy-forms.git@98743a3e8709f49b60a7aa8db33ef8248b6be2bc#egg=django_crispy_forms-dev
+git+https://github.com/maraujop/django-crispy-forms.git@dev#egg=django_crispy_forms-dev
 pkginfo==1.2.1
 py==1.4.30
 pytest==2.8.1
