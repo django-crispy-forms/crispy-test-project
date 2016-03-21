@@ -1,0 +1,16 @@
+{% extends 'bootstrap4_flexbox/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Bootstrap 4 (Flexbox enabled)</h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Default form</h1>
+            {% crispy default_form %}
+        </div>
+        <div class="col-lg-6">
+            <h1>Horizontal form</h1>
+            {% crispy horizontal_form %}
+        </div>
+    </div>
+{% endblock %}
