@@ -2,6 +2,28 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Crispy Test Project</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{% url 'bootstrap3.views.index' %}">Bootstrap 3<span class="sr-only">(current)</span></a></li>
+                    <li><a href="{% url 'bootstrap4.views.index' %}">Bootstrap 4<span class="sr-only">(current)</span></a></li>
+                    <li><a href="{% url 'bootstrap4_flexbox.views.index' %}">Bootstrap 4 (w/ Flexbox)</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
     <h1>Bootstrap 3</h1>
     {% crispy form %}
 {% endblock %}
