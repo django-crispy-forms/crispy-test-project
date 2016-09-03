@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'bootstrap4',
     'bootstrap4_flexbox',
+    'semantic'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'test_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['semantic/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +72,9 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'semantic_ui',)
+CRISPY_TEMPLATE_PACK = 'semantic_ui'
 
 WSGI_APPLICATION = 'test_project.wsgi.application'
 

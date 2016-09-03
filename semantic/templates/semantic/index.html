@@ -1,0 +1,48 @@
+{% extends 'semantic/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="ui inverted segment">
+    <div class="ui inverted secondary pointing text menu">
+        <div class="header item">Crispy Test Project</div>
+        <a class="item" href="{% url 'bootstrap3.views.index' %}">Bootstrap 3</a>
+        <a class="item" href="{% url 'bootstrap4.views.index' %}">Bootstrap 4</a>
+        <a class="item" href="{% url 'bootstrap4_flexbox.views.index' %}">Bootstrap 4 (w/ Flexbox)</a>
+        <a class="active item" href="{% url 'semantic.views.index' %}"><i class="selected radio icon"></i> Semantic UI</a>
+    </div>
+</div>
+
+<div class="ui segment">
+    <h1 class="ui header">Semantic UI layouts</h1>
+    <div class="ui grid">
+        <div class="eight wide column">
+
+            <h2 class="ui header">
+                <i class="align justify icon"></i>
+                <div class="content">
+                    Default
+                </div>
+            </h2>
+
+            <div class="ui form">
+                {% crispy default_form %}
+            </div>
+
+        </div>
+        <div class="eight wide column">
+
+            <h2 class="ui header">
+                <i class="columns icon"></i>
+                <div class="content">
+                    Horizontal form
+                </div>
+            </h2>
+
+            <div class="ui form">
+                {% crispy horizontal_form %}
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
