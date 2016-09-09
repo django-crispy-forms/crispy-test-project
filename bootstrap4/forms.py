@@ -126,7 +126,7 @@ class HorizontalMessageForm(forms.Form):
     helper.layout = Layout(
         Field('text_input', css_class='form-control-lg', wrapper_class='row'),
         Field('textarea', rows="3", css_class='form-control-lg', wrapper_class='row'),
-        'radio_buttons',
+        Field('radio_buttons', wrapper_class='row'),
         Field('checkboxes', style="background: #FAFAFA", wrapper_class='row'),
         AppendedText('appended_text', '.00', wrapper_class='row'),
         AppendedText('appended_text2', '.00', css_class='form-control-lg', wrapper_class='row'),
@@ -134,7 +134,7 @@ class HorizontalMessageForm(forms.Form):
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True, wrapper_class='row'),
         PrependedText('prepended_text_two', '@', wrapper_class='row'),
-        'multicolon_select',
+        Field('multicolon_select', wrapper_class='row'),
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
