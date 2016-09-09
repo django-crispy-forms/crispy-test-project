@@ -124,16 +124,16 @@ class HorizontalMessageForm(forms.Form):
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
-        Field('text_input', css_class='form-control-lg'),
-        Field('textarea', rows="3", css_class='form-control-lg'),
+        Field('text_input', css_class='form-control-lg', wrapper_class='row'),
+        Field('textarea', rows="3", css_class='form-control-lg', wrapper_class='row'),
         'radio_buttons',
-        Field('checkboxes', style="background: #FAFAFA"),
-        AppendedText('appended_text', '.00'),
-        AppendedText('appended_text2', '.00', css_class='form-control-lg'),
+        Field('checkboxes', style="background: #FAFAFA", wrapper_class='row'),
+        AppendedText('appended_text', '.00', wrapper_class='row'),
+        AppendedText('appended_text2', '.00', css_class='form-control-lg', wrapper_class='row'),
         PrependedText('prepended_text',
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
-                      active=True),
-        PrependedText('prepended_text_two', '@'),
+                      active=True, wrapper_class='row'),
+        PrependedText('prepended_text_two', '@', wrapper_class='row'),
         'multicolon_select',
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
