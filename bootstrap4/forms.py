@@ -141,5 +141,5 @@ class HorizontalMessageForm(forms.Form):
         )
     )
 
-    helper.label_class = 'col-lg-4'
-    helper.field_class = 'col-lg-8'
+    helper.label_class = 'col-sm-4'
+    helper.field_class = 'col-sm-8'
