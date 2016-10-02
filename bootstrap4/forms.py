@@ -135,9 +135,13 @@ class HorizontalMessageForm(forms.Form):
                       active=True, wrapper_class='row'),
         PrependedText('prepended_text_two', '@', wrapper_class='row'),
         Field('multicolon_select', wrapper_class='row'),
-        FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+        Div(
+            Div(
+                Submit('save_changes', 'Save changes', css_class="btn-primary"),
+                Submit('cancel', 'Cancel'),
+                css_class='offset-sm-4 col-sm-8'
+            ),
+            css_class='form-group row'
         )
     )
 
