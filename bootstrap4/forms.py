@@ -57,6 +57,8 @@ class MessageForm(forms.Form):
             'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
 
+    boolean_field = forms.BooleanField()
+
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
@@ -71,6 +73,7 @@ class MessageForm(forms.Form):
                       active=True),
         PrependedText('prepended_text_two', '@'),
         'multicolon_select',
+        'boolean_field',
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
@@ -129,6 +132,8 @@ class HorizontalMessageForm(forms.Form):
             'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
 
+    boolean_field = forms.BooleanField()
+
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
@@ -143,6 +148,7 @@ class HorizontalMessageForm(forms.Form):
                       active=True, wrapper_class='row'),
         PrependedText('prepended_text_two', '@', wrapper_class='row'),
         Field('multicolon_select', wrapper_class='row'),
+        Field('boolean_field', wrapper_class='row'),
         Div(
             Div(
                 Submit('save_changes', 'Save changes', css_class="btn-primary"),

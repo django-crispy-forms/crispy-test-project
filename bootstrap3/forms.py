@@ -54,6 +54,8 @@ class MessageForm(forms.Form):
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
     )
 
+    boolean_field = forms.BooleanField()
+
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
@@ -69,6 +71,7 @@ class MessageForm(forms.Form):
                       active=True),
         PrependedText('prepended_text_two', '@'),
         'multicolon_select',
+        'boolean_field',
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
