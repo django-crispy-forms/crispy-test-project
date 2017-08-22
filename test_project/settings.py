@@ -40,7 +40,6 @@ INSTALLED_APPS = (
     'crispy_forms',
     'bootstrap3',
     'bootstrap4',
-    'bootstrap4_flexbox',
 )
 
 MIDDLEWARE_CLASSES = (
