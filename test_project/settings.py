@@ -26,7 +26,8 @@ SECRET_KEY = 'TOTALLY A SAFE SECRET_KEY'
 DEBUG = True
 
 ALLOWED_HOSTS = [
- u'crispy-test-project.herokuapp.com'
+    u'crispy-test-project.herokuapp.com',
+    u'127.0.0.1'
 ]
 
 
