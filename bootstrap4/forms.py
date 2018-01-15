@@ -136,18 +136,18 @@ class HorizontalMessageForm(forms.Form):
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
-        Field('text_input', css_class='form-control-lg', wrapper_class='row'),
-        Field('textarea', rows="3", css_class='form-control-lg', wrapper_class='row'),
-        Field('radio_buttons', wrapper_class='row'),
-        Field('checkboxes', style="background: #FAFAFA", wrapper_class='row'),
+        Field('text_input', css_class='form-control-lg'),
+        Field('textarea', rows="3", css_class='form-control-lg'),
+        Field('radio_buttons'),
+        Field('checkboxes', style="background: #FAFAFA"),
         AppendedText('appended_text', '.00', wrapper_class='row'),
         AppendedText('appended_text2', '.00', css_class='form-control-lg', wrapper_class='row'),
         PrependedText('prepended_text',
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True, wrapper_class='row'),
         PrependedText('prepended_text_two', '@', wrapper_class='row'),
-        Field('multicolon_select', wrapper_class='row'),
-        Field('boolean_field', wrapper_class='row'),
+        Field('multicolon_select'),
+        Field('boolean_field'),
         Div(
             Div(
                 Submit('save_changes', 'Save changes', css_class="btn-primary"),
@@ -158,5 +158,6 @@ class HorizontalMessageForm(forms.Form):
         )
     )
 
+    helper.form_class = 'form-horizontal'
     helper.label_class = 'col-sm-4'
     helper.field_class = 'col-sm-8'
