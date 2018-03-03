@@ -25,7 +25,10 @@ SECRET_KEY = 'TOTALLY A SAFE SECRET_KEY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    u'crispy-test-project.herokuapp.com',
+    u'127.0.0.1'
+]
 
 
 # Application definition
@@ -40,8 +43,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'bootstrap3',
     'bootstrap4',
-    'bootstrap4_flexbox',
-    'semantic'
+    'semantic',
 )
 
 MIDDLEWARE_CLASSES = (

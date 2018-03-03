@@ -17,14 +17,11 @@ from django.conf.urls import url
 
 from bootstrap3.views import index as bootstrap_3_preview
 from bootstrap4.views import index as bootstrap_4_preview
-from bootstrap4_flexbox.views import index as bootstrap_4_flexbox_preview
 from semantic.views import index as semantic_preview
-
 
 urlpatterns = [
     url(r'^$', bootstrap_4_preview),
-    url(r'^bootstrap3$', bootstrap_3_preview),
-    url(r'^bootstrap4$', bootstrap_4_preview),
-    url(r'^bootstrap4-flexbox$', bootstrap_4_flexbox_preview),
-    url(r'^semantic', semantic_preview),
+    url(r'^bootstrap3$', bootstrap_3_preview, name='bootstrap3.views.index'),
+    url(r'^bootstrap4$', bootstrap_4_preview, name='bootstrap4.views.index'),
+    url(r'^semantic', semantic_preview, name='semantic.views.index'),
 ]

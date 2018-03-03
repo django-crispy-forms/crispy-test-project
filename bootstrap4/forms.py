@@ -51,7 +51,13 @@ class MessageForm(forms.Form):
 
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
+        help_text=(
+            'This strange option climbing out of the box is in the examples too '
+            'Only without Flexbox '
+            'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
+
+    boolean_field = forms.BooleanField()
 
     # Bootstrap4
     helper = FormHelper()
@@ -67,6 +73,7 @@ class MessageForm(forms.Form):
                       active=True),
         PrependedText('prepended_text_two', '@'),
         'multicolon_select',
+        'boolean_field',
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
@@ -119,27 +126,38 @@ class HorizontalMessageForm(forms.Form):
 
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
+        help_text=(
+            'This strange option climbing out of the box is in the examples too '
+            'Only without Flexbox '
+            'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
+
+    boolean_field = forms.BooleanField()
 
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
-        Field('text_input', css_class='form-control-lg'),
-        Field('textarea', rows="3", css_class='form-control-lg'),
-        'radio_buttons',
-        Field('checkboxes', style="background: #FAFAFA"),
-        AppendedText('appended_text', '.00'),
-        AppendedText('appended_text2', '.00', css_class='form-control-lg'),
+        Field('text_input', css_class='form-control-lg', wrapper_class='row'),
+        Field('textarea', rows="3", css_class='form-control-lg', wrapper_class='row'),
+        Field('radio_buttons', wrapper_class='row'),
+        Field('checkboxes', style="background: #FAFAFA", wrapper_class='row'),
+        AppendedText('appended_text', '.00', wrapper_class='row'),
+        AppendedText('appended_text2', '.00', css_class='form-control-lg', wrapper_class='row'),
         PrependedText('prepended_text',
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
-                      active=True),
-        PrependedText('prepended_text_two', '@'),
-        'multicolon_select',
-        FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+                      active=True, wrapper_class='row'),
+        PrependedText('prepended_text_two', '@', wrapper_class='row'),
+        Field('multicolon_select', wrapper_class='row'),
+        Field('boolean_field', wrapper_class='row'),
+        Div(
+            Div(
+                Submit('save_changes', 'Save changes', css_class="btn-primary"),
+                Submit('cancel', 'Cancel'),
+                css_class='offset-sm-4 col-sm-8'
+            ),
+            css_class='form-group row'
         )
     )
 
-    helper.label_class = 'col-lg-4'
-    helper.field_class = 'col-lg-8'
+    helper.label_class = 'col-sm-4'
+    helper.field_class = 'col-sm-8'
