@@ -59,6 +59,8 @@ class MessageForm(forms.Form):
 
     boolean_field = forms.BooleanField()
 
+    file_field = forms.FileField()
+
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
@@ -74,6 +76,7 @@ class MessageForm(forms.Form):
         PrependedText('prepended_text_two', '@'),
         'multicolon_select',
         'boolean_field',
+        'file_field',
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
@@ -133,6 +136,7 @@ class HorizontalMessageForm(forms.Form):
     )
 
     boolean_field = forms.BooleanField()
+    file_field = forms.FileField()
 
     # Bootstrap4
     helper = FormHelper()
@@ -149,6 +153,7 @@ class HorizontalMessageForm(forms.Form):
         PrependedText('prepended_text_two', '@'),
         Field('multicolon_select'),
         Field('boolean_field'),
+        Field('file_field'),
         Div(
             Div(
                 Submit('save_changes', 'Save changes', css_class="btn-primary"),
