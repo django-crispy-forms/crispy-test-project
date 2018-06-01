@@ -2,7 +2,7 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
-from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
+from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions
 
 
 class MessageForm(forms.Form):
@@ -45,6 +45,24 @@ class MessageForm(forms.Form):
         help_text="And a bigger appended text field"
     )
 
+    appended_select = forms.ChoiceField(
+        label="Select field with appended text",
+        choices=[(1, "Choice 1"), (2, "Choice 2")],
+        help_text="Some help text"
+    )
+
+    prepended_appended_select = forms.ChoiceField(
+        label="Select field with both preprended and appended text",
+        choices=[(1, "Choice 1"), (2, "Choice 2")],
+        help_text="Some help text"
+    )
+
+    prepended_select = forms.ChoiceField(
+        label="Select field with prepended text",
+        choices=[(1, "Choice 1"), (2, "Choice 2")],
+        help_text="Some help text"
+    )
+
     prepended_text = forms.CharField()
 
     prepended_text_two = forms.CharField()
@@ -70,6 +88,9 @@ class MessageForm(forms.Form):
         Field('checkboxes', style="background: #FAFAFA"),
         AppendedText('appended_text', '.00'),
         AppendedText('appended_text2', '.00', css_class='form-control-lg'),
+        AppendedText('appended_select', '.00'),
+        PrependedAppendedText('prepended_appended_select', '$', '.00'),
+        PrependedText('prepended_select', '$'),
         PrependedText('prepended_text',
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True),
