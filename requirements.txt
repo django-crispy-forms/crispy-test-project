@@ -1,5 +1,5 @@
-Django==1.11.4
-django-crispy-forms==1.6.1 # Use pip install -e ../django-crispy-forms for local dev
-gunicorn==19.7.1
-pytz==2017.2
+Django==2.0.6
+django-crispy-forms==1.7.2 # Use pip install -e ../django-crispy-forms for local dev
+gunicorn==19.8.1
+pytz==2018.4
 crispy-forms-semantic-ui==0.2.0 # added to ease up testing of semantic ui templates
