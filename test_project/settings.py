@@ -40,9 +40,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # dependencies
     'crispy_forms',
+    'crispy_forms_semantic_ui',
+    # internal apps
     'bootstrap3',
     'bootstrap4',
+    'semantic',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -73,6 +77,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'semantic-ui',)
 
 WSGI_APPLICATION = 'test_project.wsgi.application'
 

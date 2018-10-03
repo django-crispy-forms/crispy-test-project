@@ -2,7 +2,7 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
-from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions
+from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 
 class MessageForm(forms.Form):
@@ -37,73 +37,20 @@ class MessageForm(forms.Form):
         help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",
     )
 
-    appended_text = forms.CharField(
-        help_text="Here's more help text"
-    )
-
-    appended_text2 = forms.CharField(
-        help_text="And a bigger appended text field"
-    )
-
-    appended_select = forms.ChoiceField(
-        label="Select field with appended text",
-        choices=[(1, "Choice 1"), (2, "Choice 2")],
-        help_text="Some help text"
-    )
-
-    prepended_appended_select = forms.ChoiceField(
-        label="Select field with both preprended and appended text",
-        choices=[(1, "Choice 1"), (2, "Choice 2")],
-        help_text="Some help text"
-    )
-
-    prepended_select = forms.ChoiceField(
-        label="Select field with prepended text",
-        choices=[(1, "Choice 1"), (2, "Choice 2")],
-        help_text="Some help text"
-    )
-
-    prepended_text = forms.CharField()
-
-    prepended_text_two = forms.CharField()
-
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
-        help_text=(
-            'This strange option climbing out of the box is in the examples too '
-            'Only without Flexbox '
-            'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
-
-    boolean_field = forms.BooleanField()
-
-    file_field = forms.FileField()
 
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
-        Field('text_input', css_class='form-control-lg'),
-        Field('textarea', rows="3", css_class='form-control-lg'),
+        Field('text_input'),
+        Field('textarea'),
         'radio_buttons',
         Field('checkboxes', style="background: #FAFAFA"),
-        AppendedText('appended_text', '.00'),
-        AppendedText('appended_text2', '.00', css_class='form-control-lg'),
-        AppendedText('appended_select', '.00'),
-        PrependedAppendedText('prepended_appended_select', '$', '.00'),
-        PrependedText('prepended_select', '$'),
-        PrependedText('prepended_text',
-                      '<input type="checkbox" checked="checked" value="" id="" name="">',
-                      active=True),
-        PrependedText('prepended_text_two', '@'),
-        'multicolon_select',
-        'boolean_field',
-        'file_field',
-        Div(
-            Div(
-                Submit('save_changes', 'Save changes', css_class="btn-primary"),
-                Submit('cancel', 'Cancel'),
-            ),
-            css_class='form-group'
+        FormActions(
+            Submit('save_changes', 'Save changes', css_class="btn-primary"),
+            Submit('cancel', 'Cancel'),
         )
     )
 
@@ -155,37 +102,25 @@ class HorizontalMessageForm(forms.Form):
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
     )
 
-    boolean_field = forms.BooleanField()
-    file_field = forms.FileField()
-
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
-        Field('text_input', css_class='form-control-lg'),
-        Field('textarea', rows="3", css_class='form-control-lg'),
-        Field('radio_buttons'),
-        Field('checkboxes', style="background: #FAFAFA"),
+        Field('text_input'),
+        Field('textarea', rows="6"),
+        'radio_buttons',
+        Field('checkboxes'),
         AppendedText('appended_text', '.00'),
         AppendedText('appended_text2', '.00', css_class='form-control-lg'),
         PrependedText('prepended_text',
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True),
         PrependedText('prepended_text_two', '@'),
-        Field('multicolon_select'),
-        Field('boolean_field'),
-        Field('file_field'),
-        Div(
-            Div(
-                Submit('save_changes', 'Save changes', css_class="btn-primary"),
-                Submit('cancel', 'Cancel'),
-                css_class='col-8 ml-auto'
-            ),
-            css_class='form-group row'
+        'multicolon_select',
+        FormActions(
+            Submit('save_changes', 'Save changes', css_class="btn-primary"),
+            Submit('cancel', 'Cancel'),
         )
     )
-    helper.form_group_wrapper_class = 'row'
 
-    helper.form_class = 'form-horizontal'
-    helper.label_class = 'col-sm-4'
-    helper.field_class = 'col-sm-8'
-
+    helper.label_class = ''
+    helper.field_class = 'six wide field'
