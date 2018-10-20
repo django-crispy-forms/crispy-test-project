@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from django import forms
+
+from crispy_forms.bootstrap import AppendedText, FormActions, PrependedText
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
-from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
+from crispy_forms.layout import HTML, Button, Div, Field, Layout
+from crispy_forms_semantic_ui.semantic import StrictButton
 
 
 class MessageForm(forms.Form):
@@ -49,8 +51,8 @@ class MessageForm(forms.Form):
         'radio_buttons',
         Field('checkboxes', style="background: #FAFAFA"),
         FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+            StrictButton('Save changes'),
+            StrictButton('Cancel'),
         )
     )
 
@@ -102,7 +104,7 @@ class HorizontalMessageForm(forms.Form):
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
     )
 
-    # Bootstrap4
+    # Semantic UI
     helper = FormHelper()
     helper.layout = Layout(
         Field('text_input'),
@@ -110,17 +112,17 @@ class HorizontalMessageForm(forms.Form):
         'radio_buttons',
         Field('checkboxes'),
         AppendedText('appended_text', '.00'),
-        AppendedText('appended_text2', '.00', css_class='form-control-lg'),
+        AppendedText('appended_text2', '.00'),
         PrependedText('prepended_text',
-                      '<input type="checkbox" checked="checked" value="" id="" name="">',
+                      '<i class="tags icon"></i>',
                       active=True),
         PrependedText('prepended_text_two', '@'),
         'multicolon_select',
         FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+            StrictButton('Save changes'),
+            StrictButton('Cancel')
         )
     )
 
     helper.label_class = ''
-    helper.field_class = 'six wide field'
+    helper.field_class = ''
