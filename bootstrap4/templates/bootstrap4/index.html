@@ -24,8 +24,16 @@
         {% crispy default_form %}
     </div>
     <div class="col-lg-12">
+        <h3>Default form with failing validation</h3>
+        {% crispy default_form_failing %}
+    </div>
+    <div class="col-lg-12">
         <h3>Horizontal form</h3>
         {% crispy horizontal_form %}
+    </div>
+    <div class="col-lg-12">
+        <h3>Horizontal form with failing validation</h3>
+        {% crispy horizontal_form_failing %}
     </div>
 </div>
 {% endblock %}

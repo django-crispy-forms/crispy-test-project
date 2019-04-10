@@ -31,6 +31,20 @@
         <div class="eight wide column">
 
             <h2 class="ui header">
+                <i class="align justify icon"></i>
+                <div class="content">
+                    Default
+                </div>
+            </h2>
+
+            <div class="ui form">
+                {% crispy default_form_failing %}
+            </div>
+
+        </div>
+        <div class="eight wide column">
+
+            <h2 class="ui header">
                 <i class="columns icon"></i>
                 <div class="content">
                     Horizontal form
@@ -39,6 +53,20 @@
 
             <div class="ui form">
                 {% crispy horizontal_form %}
+            </div>
+
+        </div>
+        <div class="eight wide column">
+
+            <h2 class="ui header">
+                <i class="columns icon"></i>
+                <div class="content">
+                    Horizontal form
+                </div>
+            </h2>
+
+            <div class="ui form">
+                {% crispy horizontal_form_failing %}
             </div>
 
         </div>
