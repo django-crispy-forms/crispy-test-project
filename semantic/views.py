@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    #settings.CRISPY_TEMPLATE_PACK = 'semantic_ui'
+    settings.CRISPY_TEMPLATE_PACK = 'semantic-ui'
     from semantic.forms import HorizontalMessageForm, MessageForm
 
     # This view is missing all form handling logic for simplicity of the example
