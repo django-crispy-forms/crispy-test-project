@@ -9,3 +9,5 @@ gunicorn = ">=19.8.1"
 pytz = ">=2018.4"
 # added to ease up testing of semantic ui templates
 crispy-forms-semantic-ui = ">=0.2.0"
+pytest = "*"
+pytest-django = "*"
