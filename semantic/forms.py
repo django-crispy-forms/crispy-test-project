@@ -37,6 +37,21 @@ class MessageForm(forms.Form):
         help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",
     )
 
+    grouped_checkboxes = forms.MultipleChoiceField(
+        choices=(
+            ('Group 1',
+                ((1, "Option one"),
+                 (2, "Option two"),
+                 (3, "Option three"))),
+            ('Group 2',
+                ((4, "Option four"),
+                 (5, "Option five"),
+                 (6, "Option six"))),
+        ),
+        initial=(1,),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
     )
