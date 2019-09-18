@@ -113,9 +113,12 @@ class MessageForm(forms.Form):
         'multicolon_select',
         'boolean_field',
         'file_field',
-        FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+        Div(
+            Div(
+                Submit('save_changes', 'Save changes', css_class="btn-primary"),
+                Submit('cancel', 'Cancel'),
+            ),
+            css_class='form-group'
         )
     )
 
@@ -165,10 +168,6 @@ class HorizontalMessageForm(forms.Form):
 
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
-        help_text=(
-            'This strange option climbing out of the box is in the examples too '
-            'Only without Flexbox '
-            'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
 
     boolean_field = forms.BooleanField()
@@ -201,5 +200,7 @@ class HorizontalMessageForm(forms.Form):
     )
     helper.form_group_wrapper_class = 'row'
 
-    helper.label_class = 'col-4'
-    helper.field_class = 'col-8'
+    helper.form_class = 'form-horizontal'
+    helper.label_class = 'col-sm-4'
+    helper.field_class = 'col-sm-8'
+
