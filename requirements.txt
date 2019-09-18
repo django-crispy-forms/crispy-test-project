@@ -1,6 +1,5 @@
-
-crispy-forms-semantic-ui==0.2.0
-django-crispy-forms==1.7.2
-Django==2.2.5
-gunicorn==19.9.0
-pytz==2018.5
+crispy-forms-semantic-ui>=0.2.0 # added to ease up testing of semantic ui templates
+django-crispy-forms>=1.7.2      # Use pip install -e ../django-crispy-forms for local dev
+Django>=2.2.5
+gunicorn>=19.9.0
+pytz>=2018.5
