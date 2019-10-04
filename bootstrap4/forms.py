@@ -2,14 +2,18 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
-from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions
+from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions, InlineCheckboxes, \
+    InlineRadios
 
 
 class MessageForm(forms.Form):
-    text_input = forms.CharField()
+    text_input = forms.CharField(
+        help_text="help on a text_input",
+    )
 
     textarea = forms.CharField(
         widget=forms.Textarea(),
+        help_text="help on a textarea",
     )
 
     radio_buttons = forms.ChoiceField(
@@ -21,6 +25,17 @@ class MessageForm(forms.Form):
         ),
         widget=forms.RadioSelect,
         initial='option_two',
+        help_text="help on a radio_buttons",
+    )
+
+    inline_radio_buttons = forms.ChoiceField(
+        choices=(
+            ('option_one', 'option_one'),
+            ('option_two', 'option_two')
+        ),
+        widget=forms.RadioSelect,
+        initial='option_two',
+        help_text="help on a inline_radio_buttons",
     )
 
     checkboxes = forms.MultipleChoiceField(
@@ -37,6 +52,20 @@ class MessageForm(forms.Form):
         help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",
     )
 
+    inline_checkboxes = forms.MultipleChoiceField(
+        choices=(
+            ('bird',
+             "it's a bird"),
+            ('plane',
+             "it's a plane"),
+            ('dunno',
+             "it's something else !")
+        ),
+        initial='option_one',
+        widget=forms.CheckboxSelectMultiple,
+        help_text="help on a inline_checkboxes",
+    )
+
     grouped_checkboxes = forms.MultipleChoiceField(
         choices=(
             ('Group 1',
@@ -50,6 +79,7 @@ class MessageForm(forms.Form):
         ),
         initial=(1,),
         widget=forms.CheckboxSelectMultiple,
+        help_text="help on a grouped_checkboxes",
     )
 
     appended_text = forms.CharField(
@@ -100,7 +130,9 @@ class MessageForm(forms.Form):
         Field('text_input', css_class='form-control-lg'),
         Field('textarea', rows="3", css_class='form-control-lg'),
         'radio_buttons',
+        InlineRadios('inline_radio_buttons'),
         Field('checkboxes', style="background: #FAFAFA"),
+        InlineCheckboxes('inline_checkboxes'),
         AppendedText('appended_text', '.00'),
         AppendedText('appended_text2', '.00', css_class='form-control-lg'),
         AppendedText('appended_select', '.00'),
@@ -118,6 +150,7 @@ class MessageForm(forms.Form):
             Submit('cancel', 'Cancel'),
         )
     )
+    helper.use_custom_control = True
 
 class HorizontalMessageForm(forms.Form):
     text_input = forms.CharField()
@@ -135,6 +168,17 @@ class HorizontalMessageForm(forms.Form):
         ),
         widget=forms.RadioSelect,
         initial='option_two',
+        help_text="help on a radio_buttons",
+    )
+
+    inline_radio_buttons = forms.ChoiceField(
+        choices=(
+            ('option_one', 'option_one'),
+            ('option_two', 'option_two')
+        ),
+        widget=forms.RadioSelect,
+        initial='option_two',
+        help_text="help on a inline_radio_buttons",
     )
 
     checkboxes = forms.MultipleChoiceField(
@@ -149,6 +193,20 @@ class HorizontalMessageForm(forms.Form):
         initial='option_one',
         widget=forms.CheckboxSelectMultiple,
         help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",
+    )
+
+    inline_checkboxes = forms.MultipleChoiceField(
+        choices=(
+            ('bird',
+             "it's a bird"),
+            ('plane',
+             "it's a plane"),
+            ('dunno',
+             "it's something else !")
+        ),
+        initial='option_one',
+        widget=forms.CheckboxSelectMultiple,
+        help_text="help on a inline_checkboxes",
     )
 
     appended_text = forms.CharField(
@@ -180,7 +238,9 @@ class HorizontalMessageForm(forms.Form):
         Field('text_input', css_class='form-control-lg'),
         Field('textarea', rows="3", css_class='form-control-lg'),
         Field('radio_buttons'),
+        InlineRadios('inline_radio_buttons'),
         Field('checkboxes', style="background: #FAFAFA"),
+        InlineCheckboxes('inline_checkboxes'),
         AppendedText('appended_text', '.00'),
         AppendedText('appended_text2', '.00', css_class='form-control-lg'),
         PrependedText('prepended_text',
@@ -201,5 +261,6 @@ class HorizontalMessageForm(forms.Form):
     )
     helper.form_group_wrapper_class = 'row'
 
+    helper.use_custom_control = False
     helper.label_class = 'col-4'
     helper.field_class = 'col-8'
