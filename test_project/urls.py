@@ -18,9 +18,11 @@ from django.conf.urls import url
 from bootstrap3.views import index as bootstrap_3_preview
 from bootstrap4.views import index as bootstrap_4_preview
 from semantic.views import index as semantic_preview
+from django_rendering.views import index as django_rendering_preview
 
 urlpatterns = [
     url(r'^$', bootstrap_4_preview),
+    url(r'^django$', django_rendering_preview, name='django_rendering.views.index'),
     url(r'^bootstrap3$', bootstrap_3_preview, name='bootstrap3.views.index'),
     url(r'^bootstrap4$', bootstrap_4_preview, name='bootstrap4.views.index'),
     url(r'^semantic', semantic_preview, name='semantic.views.index'),

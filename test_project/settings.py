@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'bootstrap4',
     'semantic',
+    'django_rendering',
 )
 
 MIDDLEWARE = (
