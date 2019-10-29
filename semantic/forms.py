@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
+from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, Column
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 
 class MessageForm(forms.Form):
     text_input = forms.CharField()
+    text_input_a = forms.CharField()
+    text_input_b = forms.CharField()
+    text_input_c = forms.CharField()
 
     textarea = forms.CharField(
         widget=forms.Textarea(),
@@ -63,6 +66,10 @@ class MessageForm(forms.Form):
         Field('textarea'),
         'radio_buttons',
         Field('checkboxes', style="background: #FAFAFA"),
+        Row(
+            Column('text_input_a','text_input_b'),
+            Column('text_input_c'),
+        ),
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
@@ -71,6 +78,9 @@ class MessageForm(forms.Form):
 
 class HorizontalMessageForm(forms.Form):
     text_input = forms.CharField()
+    text_input_a = forms.CharField()
+    text_input_b = forms.CharField()
+    text_input_c = forms.CharField()
 
     textarea = forms.CharField(
         widget=forms.Textarea(),
@@ -131,6 +141,10 @@ class HorizontalMessageForm(forms.Form):
                       active=True),
         PrependedText('prepended_text_two', '@'),
         'multicolon_select',
+        Row(
+            Column('text_input_a','text_input_b'),
+            Column('text_input_c'),
+        ),
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
