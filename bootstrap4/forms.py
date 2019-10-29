@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
+import datetime
+
 from django import forms
+from django.forms import widgets
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, Column
 from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions, InlineCheckboxes, \
     InlineRadios
+from django.utils import timezone
 
 
 class MessageForm(forms.Form):
@@ -122,10 +126,14 @@ class MessageForm(forms.Form):
             'Only without Flexbox '
             'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
-
+    datetime_field = forms.SplitDateTimeField(
+        initial=timezone.now()
+    )
     boolean_field = forms.BooleanField()
 
-    file_field = forms.FileField()
+    file_field = forms.FileField(
+        widget=widgets.FileInput(),
+    )
 
     # Bootstrap4
     helper = FormHelper()
@@ -148,10 +156,12 @@ class MessageForm(forms.Form):
         'multicolon_select',
         'boolean_field',
         'file_field',
+        'grouped_checkboxes',
         Row(
             Column('text_input_a','text_input_b'),
             Column('text_input_c'),
         ),
+        'datetime_field',
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
@@ -240,7 +250,10 @@ class HorizontalMessageForm(forms.Form):
     )
 
     boolean_field = forms.BooleanField()
-    file_field = forms.FileField()
+    file_field = forms.FileField(
+        widget=widgets.FileInput(),
+    )
+
 
     # Bootstrap4
     helper = FormHelper()

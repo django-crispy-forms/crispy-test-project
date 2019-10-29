@@ -3,6 +3,7 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, Column
 from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions
+from django.utils import timezone
 
 
 class MessageForm(forms.Form):
@@ -89,7 +90,9 @@ class MessageForm(forms.Form):
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
     )
-
+    datetime_field = forms.SplitDateTimeField(
+        initial=timezone.now()
+    )
     boolean_field = forms.BooleanField()
 
     # Bootstrap4
@@ -111,6 +114,8 @@ class MessageForm(forms.Form):
         PrependedText('prepended_text_two', '@'),
         'multicolon_select',
         'boolean_field',
+        'grouped_checkboxes',
+        'datetime_field',
         Row(
             Column('text_input_a', 'text_input_b', css_class="col-xs-6"),
             Column('text_input_c', css_class="col-xs-6"),
