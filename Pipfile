@@ -1,11 +1,11 @@
 [requires]
-python_version = "3.6"
+python_version = "3.8"
 
 [packages]
-django = ">=2.0"
 # Use pip install -e ../django-crispy-forms for local dev
-django-crispy-forms = ">=1.7.2"
-gunicorn = ">=19.8.1"
-pytz = ">=2018.4"
+django-crispy-forms = ">=1.8.1"
+gunicorn = ">=20.0.4"
+pytz = ">=2019.3"
 # added to ease up testing of semantic ui templates
 crispy-forms-semantic-ui = ">=0.2.0"
+Django = ">=3.0.2"
