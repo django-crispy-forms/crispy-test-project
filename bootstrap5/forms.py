@@ -2,14 +2,12 @@
 import datetime
 
 from django import forms
-from django.forms import widgets, modelform_factory
+from django.forms import widgets
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, Column
 from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions, InlineCheckboxes, \
     InlineRadios
 from django.utils import timezone
-
-from bootstrap4 import models
 
 
 class MessageForm(forms.Form):
@@ -121,11 +119,6 @@ class MessageForm(forms.Form):
 
     prepended_text_two = forms.CharField()
 
-    select = forms.ChoiceField(
-        choices=(('1', 'North'), ('2', 'South'), ('3', 'East'), ('4', 'West')),
-         help_text='Direction to go'
-    )
-
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
         help_text=(
@@ -133,21 +126,13 @@ class MessageForm(forms.Form):
             'Only without Flexbox '
             'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
-
     datetime_field = forms.SplitDateTimeField(
         initial=timezone.now()
     )
     boolean_field = forms.BooleanField()
 
     file_field = forms.FileField(
-        label="file_field",
         widget=widgets.FileInput(),
-        help_text='with widgets.FileInput()'
-    )
-
-    file_field_raw = forms.FileField(
-        label="file_field_raw",
-        help_text='with default widget'
     )
 
     # Bootstrap4
@@ -168,11 +153,9 @@ class MessageForm(forms.Form):
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True),
         PrependedText('prepended_text_two', '@'),
-        'select',
         'multicolon_select',
         'boolean_field',
         'file_field',
-        'file_field_raw',
         'grouped_checkboxes',
         Row(
             Column('text_input_a','text_input_b',),
@@ -258,11 +241,6 @@ class HorizontalMessageForm(forms.Form):
 
     prepended_text_two = forms.CharField()
 
-    select = forms.ChoiceField(
-        choices=(('1', 'North'), ('2', 'South'), ('3', 'East'), ('4', 'West')),
-         help_text='Direction to go'
-    )
-
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
         help_text=(
@@ -274,13 +252,6 @@ class HorizontalMessageForm(forms.Form):
     boolean_field = forms.BooleanField()
     file_field = forms.FileField(
         widget=widgets.FileInput(),
-        help_text='with FileInput widget',
-        required=True,
-    )
-
-    file_field_raw = forms.FileField(
-        help_text='with default widget',
-        required=True,
     )
 
 
@@ -299,33 +270,24 @@ class HorizontalMessageForm(forms.Form):
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True),
         PrependedText('prepended_text_two', '@'),
-        Field('select'),
         Field('multicolon_select'),
         Field('boolean_field'),
         Field('file_field'),
-        Field('file_field_raw'),
-        FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+        Div(
+            Div(
+                Submit('save_changes', 'Save changes', css_class="btn-primary"),
+                Submit('cancel', 'Cancel'),
+                css_class='col-8 ml-auto'
+            ),
+            css_class='form-group row'
         ),
         Row(
             Column('text_input_a','text_input_b'),
             Column('text_input_c'),
         ),
     )
-    helper.form_class = 'form-horizontal'
+    helper.form_group_wrapper_class = 'row'
 
     helper.use_custom_control = False
     helper.label_class = 'col-4'
     helper.field_class = 'col-8'
-
-FormWithFileField = modelform_factory(models.WithFileField, fields="__all__")
-
-class HorizontalModelForm(forms.ModelForm):
-    class Meta:
-        model = models.WithFileField
-        fields = '__all__'
-    helper = FormHelper()
-    helper.label_class = 'col-4'
-    helper.field_class = 'col-8'
-    helper.form_class = 'form-horizontal'
