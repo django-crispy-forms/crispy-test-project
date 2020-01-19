@@ -1,4 +1,4 @@
-{% extends 'bootstrap4/base.html' %}
+{% extends 'bootstrap5/base.html' %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -11,19 +11,19 @@
     <li class="nav-item">
       <a class="nav-link" href="{% url 'bootstrap3.views.index' %}">Bootstrap 3</a>
     </li>
-    <li class="nav-item active">
-     <a class="nav-link" href="{% url 'bootstrap4.views.index' %}">Bootstrap 4<span class="sr-only">(current)</span></a>
+    <li class="nav-item">
+     <a class="nav-link" href="{% url 'bootstrap4.views.index' %}">Bootstrap 4<span class="sr-only"></span></a>
     </li>
-          <li class="nav-item">
-     <a class="nav-link" href="{% url 'bootstrap5.views.index' %}">Bootstrap 5<span class="sr-only"></span></a>
+          <li class="nav-item active">
+     <a class="nav-link" href="{% url 'bootstrap5.views.index' %}">Bootstrap 5<span class="sr-only">(current)</span></a>
     </li>
         <li class="nav-item">
-     <a class="nav-link" href="{% url 'semantic.views.index' %}">Semantic UI<span class="sr-only">(current)</span></a>
+     <a class="nav-link" href="{% url 'semantic.views.index' %}">Semantic UI<span class="sr-only"></span></a>
     </li>
   </ul>
 </nav>
 
-<h1>Bootstrap 4</h1>
+<h1>Bootstrap 5</h1>
 <div class="row">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
