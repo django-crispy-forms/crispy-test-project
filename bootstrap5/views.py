@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    settings.CRISPY_TEMPLATE_PACK = 'bootstrap4'
+    settings.CRISPY_TEMPLATE_PACK = 'bootstrap5'
     from bootstrap5.forms import HorizontalMessageForm, MessageForm
 
     # This view is missing all form handling logic for simplicity of the example
