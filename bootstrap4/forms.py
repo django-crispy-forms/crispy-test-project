@@ -2,12 +2,14 @@
 import datetime
 
 from django import forms
-from django.forms import widgets
+from django.forms import widgets, modelform_factory
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, Column
 from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions, InlineCheckboxes, \
     InlineRadios
 from django.utils import timezone
+
+from bootstrap4 import models
 
 
 class MessageForm(forms.Form):
@@ -302,3 +304,5 @@ class HorizontalMessageForm(forms.Form):
     helper.use_custom_control = False
     helper.label_class = 'col-4'
     helper.field_class = 'col-8'
+
+FormWithFileField = modelform_factory(models.WithFileField, fields="__all__")
