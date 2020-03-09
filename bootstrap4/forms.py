@@ -134,11 +134,13 @@ class MessageForm(forms.Form):
     boolean_field = forms.BooleanField()
 
     file_field = forms.FileField(
+        label="file_field",
         widget=widgets.FileInput(),
         help_text='with widgets.FileInput()'
     )
 
     file_field_raw = forms.FileField(
+        label="file_field_raw",
         help_text='with default widget'
     )
 
