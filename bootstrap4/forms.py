@@ -133,6 +133,11 @@ class MessageForm(forms.Form):
 
     file_field = forms.FileField(
         widget=widgets.FileInput(),
+        help_text='with widgets.FileInput()'
+    )
+
+    file_field_raw = forms.FileField(
+        help_text='with default widget'
     )
 
     # Bootstrap4
@@ -156,6 +161,7 @@ class MessageForm(forms.Form):
         'multicolon_select',
         'boolean_field',
         'file_field',
+        'file_field_raw',
         'grouped_checkboxes',
         Row(
             Column('text_input_a','text_input_b'),
@@ -254,6 +260,10 @@ class HorizontalMessageForm(forms.Form):
         widget=widgets.FileInput(),
     )
 
+    file_field_raw = forms.FileField(
+        help_text='with default widget'
+    )
+
 
     # Bootstrap4
     helper = FormHelper()
@@ -273,6 +283,7 @@ class HorizontalMessageForm(forms.Form):
         Field('multicolon_select'),
         Field('boolean_field'),
         Field('file_field'),
+        Field('file_field_raw'),
         Div(
             Div(
                 Submit('save_changes', 'Save changes', css_class="btn-primary"),
