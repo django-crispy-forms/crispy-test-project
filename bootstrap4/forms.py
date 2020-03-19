@@ -262,6 +262,7 @@ class HorizontalMessageForm(forms.Form):
     boolean_field = forms.BooleanField()
     file_field = forms.FileField(
         widget=widgets.FileInput(),
+        help_text='with FileInput widget'
     )
 
     file_field_raw = forms.FileField(
