@@ -288,20 +288,16 @@ class HorizontalMessageForm(forms.Form):
         Field('boolean_field'),
         Field('file_field'),
         Field('file_field_raw'),
-        Div(
-            Div(
-                Submit('save_changes', 'Save changes', css_class="btn-primary"),
-                Submit('cancel', 'Cancel'),
-                css_class='col-8 ml-auto'
-            ),
-            css_class='form-group row'
+        FormActions(
+            Submit('save_changes', 'Save changes', css_class="btn-primary"),
+            Submit('cancel', 'Cancel'),
         ),
         Row(
             Column('text_input_a','text_input_b'),
             Column('text_input_c'),
         ),
     )
-    helper.form_group_wrapper_class = 'row'
+    helper.form_class = 'form-horizontal'
 
     helper.use_custom_control = False
     helper.label_class = 'col-4'
