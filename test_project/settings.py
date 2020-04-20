@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'bootstrap4',
     'semantic',
     'django_rendering',
+    'tailwind',
 )
 
 MIDDLEWARE = (
@@ -78,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'semantic-ui',)
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'semantic-ui', 'tailwind')
 
 WSGI_APPLICATION = 'test_project.wsgi.application'
 

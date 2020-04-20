@@ -1,0 +1,58 @@
+{% extends 'tailwind/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+  <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+    <span class="font-semibold text-xl tracking-tight">Tailwind CSS</span>
+  </div>
+
+      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div class="text-sm lg:flex-grow">
+      <a href="{% url 'django_rendering.views.index' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Django rendering
+      </a>
+      <a href="{% url 'bootstrap3.views.index' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Bootstrap 3
+      </a>
+      <a href="{% url 'bootstrap4.views.index' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Bootstrap 4
+      </a>
+        <a href="{% url 'semantic.views.index' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Semantic UI
+      </a>
+        <a href="{% url 'tailwind.views.index' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Tailwind
+      </a>
+
+    </div>
+</nav>
+
+<h1 class="text-3xl font-bold mb-3">Tailwind</h1>
+<div class="">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="col-lg-12">
+        <h3 class="text-xl mb-2">Default form</h3>
+        {% crispy default_form %}
+    </div>
+    <div class="col-lg-12">
+        <h3>Default form with failing validation</h3>
+        {% crispy default_form_failing %}
+    </div>
+    <div class="col-lg-12" id="model_form">
+        <h3>Model form</h3>
+        {% crispy model_form %}
+    </div>
+    <div class="col-lg-12">
+        <h3>Horizontal form</h3>
+        {% crispy horizontal_form %}
+    </div>
+    <div class="col-lg-12">
+        <h3>Horizontal form with failing validation</h3>
+        {% crispy horizontal_form_failing %}
+    </div>
+    </form>
+</div>
+{% endblock %}
