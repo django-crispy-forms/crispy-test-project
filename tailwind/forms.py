@@ -8,7 +8,7 @@ from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, C
 from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions, InlineCheckboxes, \
     InlineRadios
 from django.utils import timezone
-from crispy_forms.tailwind import CSSContainer
+from crispy_tailwind.tailwind import CSSContainer
 
 from bootstrap4 import models
 
