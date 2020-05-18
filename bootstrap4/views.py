@@ -2,7 +2,7 @@
 from django.conf import settings
 from django.shortcuts import render
 
-from bootstrap4.forms import FormWithFileField
+from bootstrap4.forms import FormWithFileField, HorizontalModelForm
 from bootstrap4.models import WithFileField
 
 
@@ -20,6 +20,10 @@ def index(request):
                       'model_form': FormWithFileField(
                           instance=instance,
                           prefix='model_form',
+                      ),
+                      'horizontal_model_form': HorizontalModelForm(
+                          instance=instance,
+                          prefix='horizontal_model_form',
                       ),
                       'default_form': MessageForm(
                           data=request.POST if request.method == "POST" else None,

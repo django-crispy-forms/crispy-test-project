@@ -262,11 +262,13 @@ class HorizontalMessageForm(forms.Form):
     boolean_field = forms.BooleanField()
     file_field = forms.FileField(
         widget=widgets.FileInput(),
-        help_text='with FileInput widget'
+        help_text='with FileInput widget',
+        required=True,
     )
 
     file_field_raw = forms.FileField(
-        help_text='with default widget'
+        help_text='with default widget',
+        required=True,
     )
 
 
@@ -305,3 +307,12 @@ class HorizontalMessageForm(forms.Form):
     helper.field_class = 'col-8'
 
 FormWithFileField = modelform_factory(models.WithFileField, fields="__all__")
+
+class HorizontalModelForm(forms.ModelForm):
+    class Meta:
+        model = models.WithFileField
+        fields = '__all__'
+    helper = FormHelper()
+    helper.label_class = 'col-4'
+    helper.field_class = 'col-8'
+    helper.form_class = 'form-horizontal'
