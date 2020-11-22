@@ -13,6 +13,7 @@ from django.utils import timezone
 class MessageForm(forms.Form):
     text_input = forms.CharField(
         help_text="help on a text_input",
+        initial = "test_input"
     )
     text_input_a = forms.CharField()
     text_input_b = forms.CharField()
@@ -134,17 +135,21 @@ class MessageForm(forms.Form):
     file_field = forms.FileField(
         widget=widgets.FileInput(),
     )
+    file_field_2 = forms.FileField(
+        widget=widgets.ClearableFileInput(),
+    )
+
 
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
-        Field('text_input', css_class='form-control-lg'),
-        Field('textarea', rows="3", css_class='form-control-lg'),
+        Field('text_input', css_class='form-control-lg', ),
+        Field('textarea', rows="3", css_class='form-control-lg', placeholder="test"),
         'radio_buttons',
         InlineRadios('inline_radio_buttons'),
         Field('checkboxes', style="background: #FAFAFA"),
         InlineCheckboxes('inline_checkboxes'),
-        AppendedText('appended_text', '.00'),
+        AppendedText('appended_text', '.00', css_class="input-group-lg"),
         AppendedText('appended_text2', '.00', css_class='form-control-lg'),
         AppendedText('appended_select', '.00'),
         PrependedAppendedText('prepended_appended_select', '$', '.00'),
@@ -156,7 +161,8 @@ class MessageForm(forms.Form):
         'multicolon_select',
         'boolean_field',
         'file_field',
-        'grouped_checkboxes',
+        'file_field_2',
+        Field('grouped_checkboxes'),
         Row(
             Column('text_input_a','text_input_b',),
             Column('text_input_c',),
@@ -253,6 +259,12 @@ class HorizontalMessageForm(forms.Form):
     file_field = forms.FileField(
         widget=widgets.FileInput(),
     )
+    file_field_2 = forms.FileField(
+        widget=widgets.ClearableFileInput(),
+    )
+
+
+
 
 
     # Bootstrap4
