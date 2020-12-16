@@ -121,6 +121,11 @@ class MessageForm(forms.Form):
 
     prepended_text_two = forms.CharField()
 
+    select = forms.ChoiceField(
+        choices=(('1', 'North'), ('2', 'South'), ('3', 'East'), ('4', 'West')),
+         help_text='Direction to go'
+    )
+
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
         help_text=(
@@ -128,6 +133,7 @@ class MessageForm(forms.Form):
             'Only without Flexbox '
             'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
+
     datetime_field = forms.SplitDateTimeField(
         initial=timezone.now()
     )
@@ -162,6 +168,7 @@ class MessageForm(forms.Form):
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True),
         PrependedText('prepended_text_two', '@'),
+        'select',
         'multicolon_select',
         'boolean_field',
         'file_field',
@@ -251,6 +258,11 @@ class HorizontalMessageForm(forms.Form):
 
     prepended_text_two = forms.CharField()
 
+    select = forms.ChoiceField(
+        choices=(('1', 'North'), ('2', 'South'), ('3', 'East'), ('4', 'West')),
+         help_text='Direction to go'
+    )
+
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
         help_text=(
@@ -287,6 +299,7 @@ class HorizontalMessageForm(forms.Form):
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True),
         PrependedText('prepended_text_two', '@'),
+        Field('select'),
         Field('multicolon_select'),
         Field('boolean_field'),
         Field('file_field'),
