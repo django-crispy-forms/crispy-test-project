@@ -25,7 +25,6 @@ class MessageForm(forms.Form):
     text_input_accordion3 = forms.CharField()
     text_input_accordion4 = forms.CharField()
 
-
     textarea = forms.CharField(
         widget=forms.Textarea(),
         help_text="help on a textarea",
