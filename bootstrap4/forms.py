@@ -6,7 +6,7 @@ from django.forms import widgets, modelform_factory
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, Column
 from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions, InlineCheckboxes, \
-    InlineRadios
+    InlineRadios, Accordion, AccordionGroup
 from django.utils import timezone
 
 from bootstrap4 import models
@@ -19,6 +19,12 @@ class MessageForm(forms.Form):
     text_input_a = forms.CharField()
     text_input_b = forms.CharField()
     text_input_c = forms.CharField()
+
+    text_input_accordion1 = forms.CharField()
+    text_input_accordion2 = forms.CharField()
+    text_input_accordion3 = forms.CharField()
+    text_input_accordion4 = forms.CharField()
+
 
     textarea = forms.CharField(
         widget=forms.Textarea(),
@@ -179,6 +185,21 @@ class MessageForm(forms.Form):
             Column('text_input_c'),
         ),
         'datetime_field',
+        HTML('<strong>First accordion:</strong>'),
+        Accordion(
+            AccordionGroup(
+                'Accordion Group 1', 'text_input_accordion1'),
+            AccordionGroup(
+                'Accordion Group 2', 'text_input_accordion2')
+        ),
+        HTML('<strong>Second accordion:</strong>'),
+        Accordion(
+            AccordionGroup(
+                'Accordion Group 1', 'text_input_accordion3'),
+            AccordionGroup(
+                'Accordion Group 2', 'text_input_accordion4')
+        ),
+
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
@@ -191,6 +212,11 @@ class HorizontalMessageForm(forms.Form):
     text_input_a = forms.CharField()
     text_input_b = forms.CharField()
     text_input_c = forms.CharField()
+
+    text_input_accordion1 = forms.CharField()
+    text_input_accordion2 = forms.CharField()
+    text_input_accordion3 = forms.CharField()
+    text_input_accordion4 = forms.CharField()
 
     textarea = forms.CharField(
         widget=forms.Textarea(),
@@ -304,6 +330,20 @@ class HorizontalMessageForm(forms.Form):
         Field('boolean_field'),
         Field('file_field'),
         Field('file_field_raw'),
+        HTML('<strong>First accordion:</strong>'),
+        Accordion(
+            AccordionGroup(
+                'Accordion Group 1', 'text_input_accordion1'),
+            AccordionGroup(
+                'Accordion Group 2', 'text_input_accordion2')
+        ),
+        HTML('<strong>Second accordion:</strong>'),
+        Accordion(
+            AccordionGroup(
+                'Accordion Group 1', 'text_input_accordion3'),
+            AccordionGroup(
+                'Accordion Group 2', 'text_input_accordion4')
+        ),
         FormActions(
             Submit('save_changes', 'Save changes', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
