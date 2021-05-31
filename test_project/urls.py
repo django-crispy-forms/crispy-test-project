@@ -13,7 +13,7 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.urls import path
 
 from bootstrap3.views import index as bootstrap_3_preview
 from bootstrap4.views import index as bootstrap_4_preview
@@ -21,9 +21,9 @@ from semantic.views import index as semantic_preview
 from django_rendering.views import index as django_rendering_preview
 
 urlpatterns = [
-    url(r'^$', bootstrap_4_preview),
-    url(r'^django$', django_rendering_preview, name='django_rendering.views.index'),
-    url(r'^bootstrap3$', bootstrap_3_preview, name='bootstrap3.views.index'),
-    url(r'^bootstrap4$', bootstrap_4_preview, name='bootstrap4.views.index'),
-    url(r'^semantic', semantic_preview, name='semantic.views.index'),
+    path('', bootstrap_4_preview),
+    path('django', django_rendering_preview, name='django_rendering.views.index'),
+    path('bootstrap3', bootstrap_3_preview, name='bootstrap3.views.index'),
+    path('bootstrap4', bootstrap_4_preview, name='bootstrap4.views.index'),
+    path('semantic', semantic_preview, name='semantic.views.index'),
 ]
