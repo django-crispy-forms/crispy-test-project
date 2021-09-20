@@ -8,13 +8,12 @@ from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, C
 from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions, InlineCheckboxes, \
     InlineRadios
 from django.utils import timezone
-
-from bootstrap4 import models
-
+from bootstrap5 import models
 
 class MessageForm(forms.Form):
     text_input = forms.CharField(
         help_text="help on a text_input",
+        initial = "test_input"
     )
     text_input_a = forms.CharField()
     text_input_b = forms.CharField()
@@ -121,11 +120,6 @@ class MessageForm(forms.Form):
 
     prepended_text_two = forms.CharField()
 
-    select = forms.ChoiceField(
-        choices=(('1', 'North'), ('2', 'South'), ('3', 'East'), ('4', 'West')),
-         help_text='Direction to go'
-    )
-
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
         help_text=(
@@ -133,33 +127,29 @@ class MessageForm(forms.Form):
             'Only without Flexbox '
             'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
-
     datetime_field = forms.SplitDateTimeField(
         initial=timezone.now()
     )
     boolean_field = forms.BooleanField()
 
     file_field = forms.FileField(
-        label="file_field",
         widget=widgets.FileInput(),
-        help_text='with widgets.FileInput()'
+    )
+    file_field_2 = forms.FileField(
+        widget=widgets.ClearableFileInput(),
     )
 
-    file_field_raw = forms.FileField(
-        label="file_field_raw",
-        help_text='with default widget'
-    )
 
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
-        Field('text_input', css_class='form-control-lg'),
-        Field('textarea', rows="3", css_class='form-control-lg'),
+        Field('text_input', css_class='form-control-lg', ),
+        Field('textarea', rows="3", css_class='form-control-lg', placeholder="test"),
         'radio_buttons',
         InlineRadios('inline_radio_buttons'),
         Field('checkboxes', style="background: #FAFAFA"),
         InlineCheckboxes('inline_checkboxes'),
-        AppendedText('appended_text', '.00'),
+        AppendedText('appended_text', '.00', css_class="input-group-lg"),
         AppendedText('appended_text2', '.00', css_class='form-control-lg'),
         AppendedText('appended_select', '.00'),
         PrependedAppendedText('prepended_appended_select', '$', '.00'),
@@ -168,12 +158,11 @@ class MessageForm(forms.Form):
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True),
         PrependedText('prepended_text_two', '@'),
-        'select',
         'multicolon_select',
         'boolean_field',
         'file_field',
-        'file_field_raw',
-        'grouped_checkboxes',
+        'file_field_2',
+        Field('grouped_checkboxes'),
         Row(
             Column('text_input_a','text_input_b',),
             Column('text_input_c',),
@@ -258,11 +247,6 @@ class HorizontalMessageForm(forms.Form):
 
     prepended_text_two = forms.CharField()
 
-    select = forms.ChoiceField(
-        choices=(('1', 'North'), ('2', 'South'), ('3', 'East'), ('4', 'West')),
-         help_text='Direction to go'
-    )
-
     multicolon_select = forms.MultipleChoiceField(
         choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')),
         help_text=(
@@ -274,14 +258,13 @@ class HorizontalMessageForm(forms.Form):
     boolean_field = forms.BooleanField()
     file_field = forms.FileField(
         widget=widgets.FileInput(),
-        help_text='with FileInput widget',
-        required=True,
+    )
+    file_field_2 = forms.FileField(
+        widget=widgets.ClearableFileInput(),
     )
 
-    file_field_raw = forms.FileField(
-        help_text='with default widget',
-        required=True,
-    )
+
+
 
 
     # Bootstrap4
@@ -299,21 +282,23 @@ class HorizontalMessageForm(forms.Form):
                       '<input type="checkbox" checked="checked" value="" id="" name="">',
                       active=True),
         PrependedText('prepended_text_two', '@'),
-        Field('select'),
         Field('multicolon_select'),
         Field('boolean_field'),
         Field('file_field'),
-        Field('file_field_raw'),
-        FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+        Div(
+            Div(
+                Submit('save_changes', 'Save changes', css_class="btn-primary"),
+                Submit('cancel', 'Cancel'),
+                css_class='col-8 ml-auto'
+            ),
+            css_class='form-group row'
         ),
         Row(
             Column('text_input_a','text_input_b'),
             Column('text_input_c'),
         ),
     )
-    helper.form_class = 'form-horizontal'
+    helper.form_group_wrapper_class = 'row'
 
     helper.use_custom_control = False
     helper.label_class = 'col-4'

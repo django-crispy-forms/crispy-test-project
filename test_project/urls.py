@@ -17,6 +17,7 @@ from django.urls import path
 
 from bootstrap3.views import index as bootstrap_3_preview
 from bootstrap4.views import index as bootstrap_4_preview
+from bootstrap5.views import index as bootstrap_5_preview
 from semantic.views import index as semantic_preview
 from django_rendering.views import index as django_rendering_preview
 
@@ -25,5 +26,6 @@ urlpatterns = [
     path('django', django_rendering_preview, name='django_rendering.views.index'),
     path('bootstrap3', bootstrap_3_preview, name='bootstrap3.views.index'),
     path('bootstrap4', bootstrap_4_preview, name='bootstrap4.views.index'),
+    path('bootstrap5', bootstrap_5_preview, name='bootstrap5.views.index'),
     path('semantic', semantic_preview, name='semantic.views.index'),
 ]

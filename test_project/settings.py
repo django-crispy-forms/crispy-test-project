@@ -43,11 +43,13 @@ INSTALLED_APPS = (
     # dependencies
     'crispy_forms',
     'crispy_forms_semantic_ui',
+    'crispy_bootstrap5',
     # internal apps
     'bootstrap3',
     'bootstrap4',
     'semantic',
     'django_rendering',
+    'bootstrap5',
 )
 
 MIDDLEWARE = (
@@ -78,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'semantic-ui',)
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'semantic-ui', 'bootstrap5',)
 
 WSGI_APPLICATION = 'test_project.wsgi.application'
 
@@ -112,3 +114,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/static/',
+]
