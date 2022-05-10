@@ -5,13 +5,12 @@ import errno
 from django.conf import settings
 from django.shortcuts import render
 
-from bootstrap4.forms import FormWithFileField, HorizontalModelForm
-from bootstrap4.models import WithFileField
+from bulma.models import WithFileField
+from bulma.forms import FormWithFileField, HorizontalMessageForm, HorizontalModelForm, MessageForm
 
 
 def index(request):
-    settings.CRISPY_TEMPLATE_PACK = 'bootstrap4'
-    from bootstrap4.forms import HorizontalMessageForm, MessageForm
+    settings.CRISPY_TEMPLATE_PACK = 'bulma'
 
     filename = '.' + ("/somedire" * 10)
     try:
@@ -24,7 +23,7 @@ def index(request):
     instance = WithFileField(my_file=filename)
 
     # This view is missing all form handling logic for simplicity of the example
-    return render(request, 'bootstrap4/index.html',
+    return render(request, 'bulma/index.html',
                   {
                       'model_form': FormWithFileField(
                           instance=instance,
