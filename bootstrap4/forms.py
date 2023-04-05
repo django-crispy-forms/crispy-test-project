@@ -6,7 +6,7 @@ from django.forms import widgets
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, Column
 from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions, InlineCheckboxes, \
-    InlineRadios
+    InlineRadios, Tab, TabHolder
 from django.utils import timezone
 
 
@@ -138,36 +138,11 @@ class MessageForm(forms.Form):
     # Bootstrap4
     helper = FormHelper()
     helper.layout = Layout(
-        Field('text_input', css_class='form-control-lg'),
-        Field('textarea', rows="3", css_class='form-control-lg'),
-        'radio_buttons',
-        InlineRadios('inline_radio_buttons'),
-        Field('checkboxes', style="background: #FAFAFA"),
-        InlineCheckboxes('inline_checkboxes'),
-        AppendedText('appended_text', '.00'),
-        AppendedText('appended_text2', '.00', css_class='form-control-lg'),
-        AppendedText('appended_select', '.00'),
-        PrependedAppendedText('prepended_appended_select', '$', '.00'),
-        PrependedText('prepended_select', '$'),
-        PrependedText('prepended_text',
-                      '<input type="checkbox" checked="checked" value="" id="" name="">',
-                      active=True),
-        PrependedText('prepended_text_two', '@'),
-        'multicolon_select',
-        'boolean_field',
-        'file_field',
-        'grouped_checkboxes',
-        Row(
-            Column('text_input_a','text_input_b',),
-            Column('text_input_c',),
-        ),
-        'datetime_field',
-        FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+        TabHolder(
+            Tab("First Tab", "text_input", "text_input_a"),
+            Tab("Second Tab", "text_input_b", "text_input_c"),
         )
     )
-    helper.use_custom_control = True
 
 class HorizontalMessageForm(forms.Form):
     text_input = forms.CharField()

@@ -44,12 +44,14 @@ INSTALLED_APPS = (
     'crispy_forms',
     'crispy_forms_semantic_ui',
     'crispy_bootstrap5',
+    'crispy_bootstrap4',
     # internal apps
     'bootstrap3',
     'bootstrap4',
     'semantic',
     'django_rendering',
     'bootstrap5',
+
 )
 
 MIDDLEWARE = (
