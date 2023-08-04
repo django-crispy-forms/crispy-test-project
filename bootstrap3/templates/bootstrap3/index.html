@@ -15,9 +15,11 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li><a href="{% url 'django_rendering.views.index' %}">Django rendering</a></li>
                     <li class="active"><a href="{% url 'bootstrap3.views.index' %}">Bootstrap 3<span class="sr-only">(current)</span></a></li>
-                    <li><a href="{% url 'bootstrap4.views.index' %}">Bootstrap 4<span class="sr-only">(current)</span></a></li>
-                    <li><a href="{% url 'semantic.views.index' %}">Semantic UI<span class="sr-only">(current)</span></a></li>
+                    <li><a href="{% url 'bootstrap4.views.index' %}">Bootstrap 4</a></li>
+                    <li><a href="{% url 'bulma.views.index' %}">Bulma</a></li>
+                    <li><a href="{% url 'semantic.views.index' %}">Semantic UI</a></li>
                 </ul>
             </div>
         </div>

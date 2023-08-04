@@ -43,10 +43,12 @@ INSTALLED_APPS = (
     # dependencies
     'crispy_forms',
     'crispy_forms_semantic_ui',
+    'crispy_bulma',
     # internal apps
     'bootstrap3',
     'bootstrap4',
     'semantic',
+    'bulma',
     'django_rendering',
 )
 
@@ -78,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'semantic-ui',)
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'bulma', 'semantic-ui',)
 
 WSGI_APPLICATION = 'test_project.wsgi.application'
 
