@@ -2,15 +2,17 @@
 import datetime
 
 from django import forms
-from django.forms import widgets, modelform_factory
+from django.forms import modelform_factory
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, HTML, Field
+from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText
 from django.utils import timezone
 
 from crispy_bulma.bulma import InlineCheckboxes, InlineRadios
 from crispy_bulma.layout import Button, Column, IconField, FormGroup, Row, Submit
+from crispy_bulma.widgets import FileUploadInput
 
-from bootstrap4 import models
+from bulma.models import WithFileField
 
 
 class MessageForm(forms.Form):
@@ -20,6 +22,14 @@ class MessageForm(forms.Form):
     text_input_a = forms.CharField()
     text_input_b = forms.CharField()
     text_input_c = forms.CharField()
+
+    integer_input = forms.IntegerField()
+    decimal_input = forms.DecimalField()
+    url_input = forms.URLField()
+    time_input = forms.TimeField()
+    date_input = forms.DateField()
+    datetime_input = forms.DateTimeField()
+    password_input = forms.CharField(widget=forms.PasswordInput, label="Password")
 
     textarea = forms.CharField(
         widget=forms.Textarea(),
@@ -139,20 +149,20 @@ class MessageForm(forms.Form):
             'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
 
-    datetime_field = forms.SplitDateTimeField(
+    split_datetime_field = forms.SplitDateTimeField(
         initial=timezone.now()
     )
     boolean_field = forms.BooleanField()
 
     file_field = forms.FileField(
         label="file_field",
-        widget=widgets.FileInput(),
+        widget=FileUploadInput(),
         help_text='with widgets.FileInput()'
     )
 
     file_field_raw = forms.FileField(
         label="file_field_raw",
-        help_text='with default widget'
+        help_text='with default widget',
     )
 
     # Bulma
@@ -168,7 +178,7 @@ class MessageForm(forms.Form):
         'select',
         Field('multicolon_select', size="5"),
         'boolean_field',
-        'file_field',
+        Field('file_field', css_class='is-primary is-large'),
         'file_field_raw',
         # TODO
         # 'grouped_checkboxes',
@@ -176,12 +186,26 @@ class MessageForm(forms.Form):
             Column('text_input_a','text_input_b'),
             Column('text_input_c'),
         ),
+        "integer_input",
+        "decimal_input",
+        "url_input",
+        "time_input",
+        "date_input",
+
         # TODO
-        # 'datetime_field',
+        #'split_datetime_field',
+        FormGroup(
+            Submit('save_changes', 'Save changes', css_class="is-primary is-large"),
+            Button('Cancel'),
+        ),
+        "datetime_input",
+        "password_input",
+
         FormGroup(
             Submit('save_changes', 'Save changes', css_class="is-primary"),
             Button('Cancel'),
-        )
+        ),
+
     )
 
 
@@ -272,7 +296,7 @@ class HorizontalMessageForm(forms.Form):
 
     boolean_field = forms.BooleanField()
     file_field = forms.FileField(
-        widget=widgets.FileInput(),
+        widget=FileUploadInput(),
         help_text='with FileInput widget',
         required=True,
     )
@@ -304,11 +328,20 @@ class HorizontalMessageForm(forms.Form):
     helper.form_horizontal = True
 
 
-FormWithFileField = modelform_factory(models.WithFileField, fields="__all__")
 
+
+class WithFileForm(forms.ModelForm):
+    class Meta:
+        fields = ['my_file', 'my_char']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['my_file'].widget = FileUploadInput()
+
+
+FormWithFileField = modelform_factory(WithFileField, form=WithFileForm)
 class HorizontalModelForm(forms.ModelForm):
     class Meta:
-        model = models.WithFileField
+        model = WithFileField
         fields = '__all__'
     helper = FormHelper()
     helper.form_horizontal = True
