@@ -75,6 +75,20 @@ class MessageForm(forms.Form):
         help_text="help on a inline_checkboxes",
     )
 
+    select_field = forms.ChoiceField(
+        choices=(
+            ('bird',
+             "it's a bird"),
+            ('plane',
+             "it's a plane"),
+            ('dunno',
+             "it's something else !")
+        ),
+        widget=forms.Select,
+        initial='option_two',
+        help_text="help on a Select",
+    )
+
     grouped_checkboxes = forms.MultipleChoiceField(
         choices=(
             ('Group 1',
@@ -159,6 +173,7 @@ class MessageForm(forms.Form):
         InlineRadios('inline_radio_buttons'),
         Field('checkboxes', style="background: #FAFAFA"),
         InlineCheckboxes('inline_checkboxes'),
+        'select_field',
         AppendedText('appended_text', '.00'),
         AppendedText('appended_text2', '.00', css_class='form-control-lg'),
         AppendedText('appended_select', '.00'),
@@ -246,6 +261,21 @@ class HorizontalMessageForm(forms.Form):
         help_text="help on a inline_checkboxes",
     )
 
+    select_field = forms.ChoiceField(
+        choices=(
+            ('bird',
+             "it's a bird"),
+            ('plane',
+             "it's a plane"),
+            ('dunno',
+             "it's something else !")
+        ),
+        widget=forms.Select,
+        initial='option_two',
+        help_text="help on a Select",
+    )
+
+
     appended_text = forms.CharField(
         help_text="Here's more help text"
     )
@@ -293,6 +323,7 @@ class HorizontalMessageForm(forms.Form):
         InlineRadios('inline_radio_buttons'),
         Field('checkboxes', style="background: #FAFAFA"),
         InlineCheckboxes('inline_checkboxes'),
+        'select_field',
         AppendedText('appended_text', '.00'),
         AppendedText('appended_text2', '.00', css_class='form-control-lg'),
         PrependedText('prepended_text',
